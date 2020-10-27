@@ -1,0 +1,9 @@
+app: fullstack-knative
+component: website
+name: website
+
+inputs:
+  src:
+    src: ./src
+    hook: npm run build
+    dist: ./dist
