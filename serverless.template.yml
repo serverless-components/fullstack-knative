@@ -1,0 +1,6 @@
+name: fullstack-knative
+org: serverlessinc
+description: Deploys a serverless express api on top of Knative as well as AWS Services.
+keywords: knative, serverless, openshift, redhat, aws
+repo: https://github.com/serverless-components/fullstack-knative
+license: MIT
