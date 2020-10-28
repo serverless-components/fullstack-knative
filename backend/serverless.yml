@@ -1,0 +1,5 @@
+app: fullstack-knative
+component: knative
+name: backend 
+inputs:
+  src: ./src

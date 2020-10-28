@@ -1,0 +1,14 @@
+{
+  "name": "fullstack-knative-backend",
+  "version": "0.1.0",
+  "description": "Simple Knative Backend Service that echos a query parameter",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "serverless.com team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
