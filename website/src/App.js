@@ -5,9 +5,11 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.state.loading = false;
-    this.state.votes = 0;
-    this.saveVote = this.saveVote.bind(this);
+    this.state.resp = null;
+
+    this.formRef = React.createRef();
+
+    this.processForm = this.processForm.bind(this);
   }
 
   /**
@@ -17,11 +19,30 @@ export default class App extends Component {
   async componentDidMount() { }
 
   /**
-   * Save Vote
+   * Process Form
    */
 
-  async saveVote() {
-    this.setState({ votes: this.state.votes + 1 });
+  async processForm(evt) {
+    evt.preventDefault();
+
+    let resp
+
+    const val = this.formRef.current.value
+
+    try {
+      resp = await fetch(`http://backend-backend-s94fto.apps.rhuss-dev.devcluster.openshift.com?name=${val}`)
+        .then(response => {
+          return response.json()
+        })
+    } catch (error) {
+      console.log(error)
+      return;
+    }
+
+    console.log(resp)
+
+    this.setState({ resp: JSON.stringify(resp) })
+
   }
 
   /**
@@ -39,19 +60,21 @@ export default class App extends Component {
           A website with an API powered by Knative running on Red Hat OpenShift Serverless
         </div>
 
-        <div className="buttonContainer">
-          <div
-            className={`button`}
-            onClick={() => {
-              this.saveVote();
-            }}
-          >
-            <div className={`buttonInner`}>
-              <div className={`buttonLeft`}>ß</div>
-              <div className="buttonRight">{this.state.votes}</div>
-            </div>
-          </div>
-        </div>
+        {!this.state.resp && (
+          <form className="formContainer" onSubmit={this.processForm}>
+            <input
+              type='text'
+              className={`form`}
+              ref={this.formRef}
+            />
+            <input type="submit" vaue="submit" />
+          </form>
+        )}
+
+        {this.state.resp && (
+          <div className="resp">{this.state.resp}</div>
+        )}
+
       </div>
     );
   }
