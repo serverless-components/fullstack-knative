@@ -1,5 +1,9 @@
 # Fullstack-Knative
 
+This fullstack application contains a back-end that runs Express.js on Knative via RedHat OpenShift Serverless.  It also uses AWS resources for hosting a front-end (AWS S3, AWS Cloudfront) and a database (AWS IAM, AWS DynamoDB).
+
+This is a great option to leverage the power of Knative as well as AWS services, especially if you are using Redhat's new OpenShift AWS Service.
+
 ## Quick-Start
 
 Create an `.env` file in your root folder.  And add the following credentials:
