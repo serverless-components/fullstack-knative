@@ -2,6 +2,24 @@
 
 ## Quick-Start
 
-Create an `.env` file in your root folder.
+Create an `.env` file in your root folder.  And add the following credentials:
+
+```
+# Learn more about about the credentials needed
+# to deploy your app https://github.com/serverless/components#credentials
+
+# AWS:
+# AWS_ACCESS_KEY_ID=<your access key>
+# AWS_SECRET_ACCESS_KEY=<your secret access key>
+
+# Connections parameters for connecting to an Kuvernetes/OpenShift cluster
+KUBERNETES_ENDPOINT=https://cluster-url-without-port.com
+KUBERNETES_PORT=6443
+# Token to use (for OpenShift: Use "oc whoami --show-token" when being connected)
+KUBERNETES_SERVICE_ACCOUNT_TOKEN=foobar
+KUBERNETES_SKIP_TLS_VERIFY=true
+```
+
+In the root folder of this project, run `serverless deploy`
 
 ...
